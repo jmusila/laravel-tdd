@@ -9,6 +9,7 @@ use Tests\TestCase;
 class BookReservationTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @booktest */
     public function test_a_book_can_be_added_to_the_libraly(){
 
@@ -21,5 +22,10 @@ class BookReservationTest extends TestCase
 
         $response->assertOk();
         $this->assertCount(1, Book::all());
+    }
+
+    /** @validationtest */
+    public function test_a_title_should_not_be_empty(){
+        
     }
 }
