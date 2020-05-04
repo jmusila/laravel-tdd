@@ -26,6 +26,14 @@ class BookReservationTest extends TestCase
 
     /** @validationtest */
     public function test_a_title_should_not_be_empty(){
+
+        $this->withoutExceptionHandling();
+
+        $response = $this->post('/books', [
+            'title' => '',
+            'author' => 'John Doe',
+        ]);
         
+        $response->assertSessionHasErrors('title');
     }
 }
