@@ -46,4 +46,9 @@ class BookReservationTest extends TestCase
         
         $response->assertSessionHasErrors('author');
     }
+
+    /** @testupdatebook */
+    public function test_a_book_can_be_updated(){
+        
+    }
 }
