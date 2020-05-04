@@ -1,25 +1,20 @@
-# .travis.yml
-dist: precise
-
+dist: bionic
 language: php
-
 php:
+  - 7.2
   - 7.3
-
-addons:
-  mariadb: 10.4
-
+services:
+  - mysql
 cache:
   directories:
     - node_modules
     - vendor
-
 before_script:
   - cp .env.travis .env
-  - sudo mysql -e 'CREATE DATABASE testing;'
+  - sudo mysql -e 'create database testing;'
   - composer self-update
-  - composer install --no-interaction
-  - php artisan migrate 
-
+  - composer install --prefer-source --no-interaction --dev
+  - php artisan key:generate
+  - php artisan migrate
 script:
   - vendor/bin/phpunit
