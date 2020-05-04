@@ -8,15 +8,8 @@ use Tests\TestCase;
 class BookReservationTest
  extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+    /** @test */
+    public function test_a_book_can_be_added_to_the_libraly(){
+        
     }
 }
