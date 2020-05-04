@@ -24,7 +24,7 @@ class BookReservationTest extends TestCase
         $this->assertCount(1, Book::all());
     }
 
-    /** @validationtest */
+    /** @testtitle */
     public function test_a_title_should_not_be_empty(){
 
         $response = $this->post('/books', [
@@ -36,7 +36,7 @@ class BookReservationTest extends TestCase
     }
 
 
-    /** @validationtest */
+    /** @testauthor */
     public function test_author_should_not_be_empty(){
 
         $response = $this->post('/books', [
@@ -49,6 +49,23 @@ class BookReservationTest extends TestCase
 
     /** @testupdatebook */
     public function test_a_book_can_be_updated(){
-        
+
+        $this->withoutExceptionHandling();
+
+        $this->post('/books', [
+            'title' => 'This is the title',
+            'author' => 'John Doe',
+        ]);
+
+        $book = Book::first()->id;
+
+        $response = $this->patch('/books/' . $book, [
+            'title' => 'New title',
+            'author' => 'Jane Doe'
+        ]);
+
+        $this->assertEquals('New title', Book::first()->title);
+        $this->assertEquals('Jane Doe', Book::first()->author);
+
     }
 }

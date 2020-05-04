@@ -16,4 +16,16 @@ class BooksController extends Controller
 
         Book::create($data);
     }
+
+    public function update(Request $request, $id){
+
+        $data = request()->validate([
+            'title' => 'required',
+            'author' => 'required'
+        ]);
+
+        $book = Book::findOrFail($id);
+
+        $book->update($data);
+    }
 }
