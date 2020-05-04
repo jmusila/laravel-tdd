@@ -11,7 +11,7 @@ class BooksController extends Controller
 
         $data = request()->validate([
             'title' => 'required',
-            'author' => ''
+            'author' => 'required'
         ]);
 
         Book::create($data);
