@@ -14,7 +14,7 @@ class AuthorTest extends TestCase
    /** @test */
    public function test_only_name_is_required_to_create_an_author(){
        Author::firstOrCreate([
-           'name' => 'John Doe'
+           'name' => 'Jane Doe',
        ]);
 
        $this->assertCount(1, Author::all());

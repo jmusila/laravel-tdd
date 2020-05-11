@@ -19,7 +19,7 @@ class Author extends Model
 
     public function setAuthorAttribute($author){
         $this->attribute['author_id'] = Author::firstOrCreate([
-            'name' => $author
+            'name' => $author,
         ]);
     }
 }
