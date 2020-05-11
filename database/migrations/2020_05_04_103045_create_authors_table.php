@@ -17,7 +17,7 @@ class CreateAuthorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->timestamp('dob');
+            $table->timestamp('dob')->nullable();
             $table->string('password');
             $table->timestamps();
         });
